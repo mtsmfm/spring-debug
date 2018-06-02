@@ -23,3 +23,4 @@ before_script:
   - "[ $TRAVIS_RUBY_VERSION = \"1.9.3\" ] && travis_retry gem install mime-types --version \"~> 2\" || true"
   - "[ $TRAVIS_RUBY_VERSION = \"1.9.3\" -o $TRAVIS_RUBY_VERSION = \"2.0.0\" ] && travis_retry gem install nokogiri --version \"~> 1.6.8\" || true"
   - travis_retry gem install rails --version "$RAILS_VERSION"
+script: bundle exec ruby -I test test/acceptance_test.rb -n '/basic/'

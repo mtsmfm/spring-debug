@@ -36,7 +36,8 @@ module Spring
           "HOME"       => user_home.to_s,
           "RAILS_ENV"  => nil,
           "RACK_ENV"   => nil,
-          "SPRING_LOG" => log_file.path
+          "SPRING_LOG" => log_file.path,
+          "BUNDLE_GEMFILE" => gemfile.to_s
         }
       end
 
@@ -57,7 +58,7 @@ module Spring
       end
 
       def spring
-        gem_home.join "bin/spring"
+        "bundle exec spring"
       end
 
       def rails_version
