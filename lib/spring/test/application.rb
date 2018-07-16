@@ -3,7 +3,7 @@ require "spring/env"
 module Spring
   module Test
     class Application
-      DEFAULT_TIMEOUT = ENV['CI'] ? 30 : 10
+      DEFAULT_TIMEOUT = ENV['CI'] ? 600 : 10
 
       attr_reader :root, :spring_env
 
@@ -119,6 +119,7 @@ module Spring
         puts dump_streams(command, output) if ENV["SPRING_DEBUG"]
 
         @times << (Time.now - start_time) if @times
+        puts "TIMEOUT DEBUG: #{Time.now - start_time}"
 
         output.merge(status: status, command: command)
       rescue Timeout::Error
