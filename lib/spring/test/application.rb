@@ -119,7 +119,7 @@ module Spring
         puts dump_streams(command, output) if ENV["SPRING_DEBUG"]
 
         @times << (Time.now - start_time) if @times
-        puts "TIMEOUT DEBUG: #{Time.now - start_time}"
+        puts "TIMEOUT DEBUG: `#{command}` #{Time.now - start_time}s"
 
         output.merge(status: status, command: command)
       rescue Timeout::Error
